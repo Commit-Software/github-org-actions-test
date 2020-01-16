@@ -28,7 +28,9 @@ jobs:
 #        CI: true
     - name: Extract branch name
       shell: bash
-      run: echo "##[set-output name=branch;]$(echo $GITHUB_REF | cut -d / -f 3)"
+      run: |
+        echo $GITHUB_REF
+        echo "##[set-output name=branch;]$(echo $GITHUB_REF | cut -d / -f 3)"
       id: extract_branch
     - name: Fastlane Action - check on PR
       if: github.event_name == 'push'
