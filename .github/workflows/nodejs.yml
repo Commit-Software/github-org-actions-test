@@ -25,3 +25,8 @@ jobs:
         npm test
       env:
         CI: true
+    - name: Fastlane Action - check on PR
+      if: github.event_name == 'push'
+      uses: maierj/fastlane-action@v1.2.0
+      with:
+        lane: ios $(echo $GITHUB_REF | cut -d / -f 3)
