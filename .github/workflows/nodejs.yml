@@ -30,6 +30,7 @@ jobs:
       shell: bash
       run: |
         echo $GITHUB_REF
+        echo `echo $GITHUB_REF | cut -d'/' -f 3`
         echo "##[set-output name=branch;]$(echo $GITHUB_REF | cut -d / -f 3)"
       id: extract_branch
     - name: Fastlane Action - check on PR
